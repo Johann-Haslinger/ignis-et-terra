@@ -1,20 +1,17 @@
-import { Entity } from "@leanscope/ecs-engine";
-import { useContext, useEffect } from "react";
-import { AdditionalTags } from "../../../base/constants";
-import { PositionFacet } from "@leanscope/ecs-models";
-import { LeanScopeClientContext } from "@leanscope/api-client/node";
+import { EntityCreator } from "@leanscope/ecs-engine";
+import { IdentifierFacet, PositionFacet, Tags } from "@leanscope/ecs-models";
+import { AdditionalTags, PLAYER_START_POSITION } from "../../../base/constants";
 
 const InitializePlayerSystem = () => {
-  const lsc = useContext(LeanScopeClientContext);
-
-  useEffect(() => {
-    const newplayerEntity = new Entity();
-    lsc.engine.addEntity(newplayerEntity);
-    newplayerEntity.add(new PositionFacet({ positionX: 0, positionY: 0, positionZ: 0 }));
-    newplayerEntity.addTag(AdditionalTags.PLAYER);
-  }, []);
-
-  return null;
+  return (
+    <EntityCreator
+      facets={[
+        new PositionFacet({ positionX: PLAYER_START_POSITION.x, positionY: PLAYER_START_POSITION.y, positionZ: 0 }),
+        new IdentifierFacet({ guid: "player" }),
+      ]}
+      tags={[Tags.CURRENT, AdditionalTags.PLAYER]}
+    />
+  );
 };
 
 export default InitializePlayerSystem;

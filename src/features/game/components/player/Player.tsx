@@ -1,13 +1,20 @@
 import { PositionProps } from "@leanscope/ecs-models";
 import { Box } from "@react-three/drei";
+import PlayerMovementSystem from "../../systems/PlayerMovementSystem";
+import { Fragment } from "react/jsx-runtime";
 
 const Player = (props: PositionProps) => {
   const { positionX, positionY } = props;
 
   return (
-    <Box args={[1, 1, 0]} position={[positionX, positionY, 0]}>
-      <meshBasicMaterial depthTest={true} transparent color={"black"} />
-    </Box>
+    <Fragment>
+      <PlayerMovementSystem />
+
+      <Box args={[0.6, 0.6, 0]} position={[positionX, positionY, 0]}>
+        <meshBasicMaterial depthTest={true} transparent color={"black"} />
+      </Box>
+      
+    </Fragment>
   );
 };
 
