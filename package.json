@@ -10,12 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.24.6",
+    "@emotion/babel-plugin-jsx-pragmatic": "^0.2.1",
+    "@emotion/react": "^11.11.4",
     "@leanscope/api-client": "^0.1.56",
     "@leanscope/ecs-engine": "^0.2.77",
     "@leanscope/ecs-generation": "^0.1.87",
     "@leanscope/ecs-models": "^0.2.51",
     "@leanscope/inspection": "^0.1.7",
     "@leanscope/storyboarding": "^0.1.93",
+    "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "react": "^18.2.0",
     "react-dom": "^18.3.1",
