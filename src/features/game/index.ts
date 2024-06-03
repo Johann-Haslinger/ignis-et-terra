@@ -1,1 +1,1 @@
-export { default as Game } from "./components/Game";
+export { default as Map } from "./components/map/Map";

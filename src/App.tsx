@@ -1,9 +1,9 @@
-import { Game } from "./features/game";
+import { Map } from "./features/game";
 
 const App = () => {
   return (
     <div>
-      <Game />
+      <Map />
     </div>
   );
 };

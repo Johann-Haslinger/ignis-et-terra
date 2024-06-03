@@ -1,10 +1,10 @@
+import InitializePlayerSystem from "../systems/InitializePlayerSystem";
 import Map from "./map/Map";
-import styled from "styled-components";
-import tw from "twin.macro";
 
 const Game = () => {
   return (
     <div>
+      <InitializePlayerSystem />
       <Map />
     </div>
   );
