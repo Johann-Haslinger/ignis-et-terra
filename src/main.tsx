@@ -9,6 +9,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <LeanScopeClientApp
       leanScopeClient={
         new LeanScopeClient({
+          supabaseUrl: "http://localhost:3000",
+          supabaseKey: "public_anon_key",
+          openAIApiKey: "public_anon_key",
+          openAIOrgId: "public_anon_key",
           localDataMode: LocalDataMode.MOCK,
         })
       }

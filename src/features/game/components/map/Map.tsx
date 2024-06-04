@@ -1,15 +1,14 @@
 import styled from "@emotion/styled";
 import { EntityPropsMapper } from "@leanscope/ecs-engine";
 import { PositionFacet } from "@leanscope/ecs-models";
+import { Box } from "@react-three/drei";
 import tw from "twin.macro";
+import { ItemTypeFacet } from "../../../../app/gameFacets";
+import { AdditionalTags } from "../../../../base/enums";
+import Inventory from "../inventory/Inventory";
+import WorldItem from "../inventory/WorldItem";
 import Player from "../player/Player";
 import FullScreenCanvas from "./FullScreenCanvas";
-import InitializePlayerSystem from "../../systems/InitializePlayerSystem";
-import { Box } from "@react-three/drei";
-import { AdditionalTags } from "../../../../base/enums";
-import { ItemTypeFacet } from "../../../../app/gameFacets";
-import WorldItem from "../inventory/WorldItem";
-import InitializeWorldItemsSystem from "../../systems/InitializeWorldItemsSystem";
 
 const StyledMapContainer = styled.div`
   ${tw`w-screen h-screen`}
@@ -18,9 +17,6 @@ const StyledMapContainer = styled.div`
 const Map = () => {
   return (
     <StyledMapContainer>
-      <InitializePlayerSystem />
-      <InitializeWorldItemsSystem />
-
       <FullScreenCanvas>
         <Box args={[5, 5, 0]} position={[0, 0, 0]}>
           <meshBasicMaterial depthTest={true} transparent color={"white"} />
@@ -34,6 +30,8 @@ const Map = () => {
 
         <EntityPropsMapper query={(e) => e.has(AdditionalTags.PLAYER)} get={[[PositionFacet], []]} onMatch={Player} />
       </FullScreenCanvas>
+
+      <Inventory />
     </StyledMapContainer>
   );
 };
