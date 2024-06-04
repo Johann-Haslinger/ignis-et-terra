@@ -1,6 +1,7 @@
 import { EntityCreator } from "@leanscope/ecs-engine";
 import { IdentifierFacet, PositionFacet, Tags } from "@leanscope/ecs-models";
-import { AdditionalTags, PLAYER_START_POSITION } from "../../../base/constants";
+import { PLAYER_START_POSITION } from "../../../base/constants";
+import { AdditionalTags } from "../../../base/enums";
 
 const InitializePlayerSystem = () => {
   return (

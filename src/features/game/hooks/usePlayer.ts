@@ -1,6 +1,6 @@
 import { useEntity } from "@leanscope/ecs-engine";
-import { AdditionalTags } from "../../../base/constants";
 import { PositionFacet } from "@leanscope/ecs-models";
+import { AdditionalTags } from "../../../base/enums";
 
 export const usePlayer = () => {
   const [playerEntity] = useEntity((e) => e.hasTag(AdditionalTags.PLAYER));
