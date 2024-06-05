@@ -1,13 +1,12 @@
-import { useEntities } from "@leanscope/ecs-engine";
-import { PositionFacet } from "@leanscope/ecs-models";
-import { AdditionalTags } from "../../../base/enums";
+import { useEntity } from "@leanscope/ecs-engine";
+import { IdentifierFacet, PositionFacet } from "@leanscope/ecs-models";
 
 export const usePlayer = () => {
-  const [playerEntities] = useEntities((e) => e.hasTag(AdditionalTags.PLAYER));
-  const playerEntity = playerEntities[0];
+  const [playerEntity] = useEntity((e) => e.get(IdentifierFacet)?.props.guid === "player");
+  console.log("playerEntity", playerEntity);
 
-  const positionX = playerEntity?.get(PositionFacet)?.props.positionX || 0;
-  const positionY = playerEntity?.get(PositionFacet)?.props.positionY || 0;
+  const positionX = playerEntity?.get(PositionFacet)?.props.positionX ?? 0;
+  const positionY = playerEntity?.get(PositionFacet)?.props.positionY ?? 0;
 
   return { positionX, positionY, playerEntity };
 };

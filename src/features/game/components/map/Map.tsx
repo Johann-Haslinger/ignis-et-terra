@@ -1,10 +1,9 @@
 import styled from "@emotion/styled";
 import { EntityPropsMapper } from "@leanscope/ecs-engine";
-import { PositionFacet } from "@leanscope/ecs-models";
+import { IdentifierFacet, PositionFacet } from "@leanscope/ecs-models";
 import { Box } from "@react-three/drei";
 import tw from "twin.macro";
 import { ItemTypeFacet } from "../../../../app/gameFacets";
-import { AdditionalTags } from "../../../../base/enums";
 import Inventory from "../inventory/Inventory";
 import WorldItem from "../inventory/WorldItem";
 import Player from "../player/Player";
@@ -28,7 +27,11 @@ const Map = () => {
           onMatch={WorldItem}
         />
 
-        <EntityPropsMapper query={(e) => e.has(AdditionalTags.PLAYER)} get={[[PositionFacet], []]} onMatch={Player} />
+        <EntityPropsMapper
+          query={(e) => e.get(IdentifierFacet)?.props.guid == "player"}
+          get={[[PositionFacet], []]}
+          onMatch={Player}
+        />
       </FullScreenCanvas>
 
       <Inventory />

@@ -24,11 +24,12 @@ const InitializeWorldItemsSystem = () => {
           );
           newWorldItemEntity.add(new ItemTypeFacet({ itemType: item.itemType }));
           newWorldItemEntity.add(new ItemNameFacet({ itemName: item.itemName }));
+          
         }
       });
     };
 
-    initializeWorldItems();
+    if (lsc) initializeWorldItems();
   }, []);
 
   return null;
