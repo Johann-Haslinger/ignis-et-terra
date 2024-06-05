@@ -1,5 +1,5 @@
 import { Facet } from "@leanscope/ecs-engine";
-import { FoodItems, ItemTypes } from "../base/enums";
+import { FoodItems, ItemTypes, OtherItems } from "../base/enums";
 
 export interface ItemTypeProps {
   itemType: ItemTypes;
@@ -12,7 +12,7 @@ export class ItemTypeFacet extends Facet<ItemTypeProps> {
 }
 
 export interface ItemNameProps {
-  itemName: FoodItems;
+  itemName: FoodItems | OtherItems;
 }
 
 export class ItemNameFacet extends Facet<ItemNameProps> {

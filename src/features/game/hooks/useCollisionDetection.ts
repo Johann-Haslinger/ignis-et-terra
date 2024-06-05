@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePlayer } from "./usePlayer";
 
 interface Rectangle {
@@ -21,7 +21,7 @@ const useCollisionDetection = (
   objectPosition: { x: number; y: number },
   objectSize: { width: number; height: number }
 ) => {
-  const { positionX, positionY } = usePlayer();
+  const { playerPositionX: positionX, playerPositionY: positionY } = usePlayer();
   const playerSize = { width: 0.6, height: 0.6 };
   const [isCollidingWithPlayer, setIsCollidingWithPlayer] = useState(false);
 
@@ -32,6 +32,7 @@ const useCollisionDetection = (
       width: playerSize.width,
       height: playerSize.height,
     };
+    console.log("playerRect", playerRect, positionX);
 
     const objectRect = {
       x: objectPosition.x,

@@ -8,6 +8,7 @@ import Inventory from "../inventory/Inventory";
 import WorldItem from "../inventory/WorldItem";
 import Player from "../player/Player";
 import FullScreenCanvas from "./FullScreenCanvas";
+import WorldItemsCollisionWithPlayerSystem from "../../systems/WorldItemsCollisionWithPlayerSystem";
 
 const StyledMapContainer = styled.div`
   ${tw`w-screen h-screen`}
@@ -16,6 +17,8 @@ const StyledMapContainer = styled.div`
 const Map = () => {
   return (
     <StyledMapContainer>
+      <WorldItemsCollisionWithPlayerSystem />
+
       <FullScreenCanvas>
         <Box args={[5, 5, 0]} position={[0, 0, 0]}>
           <meshBasicMaterial depthTest={true} transparent color={"white"} />

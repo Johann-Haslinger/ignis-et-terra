@@ -4,6 +4,7 @@ import InitializePlayerSystem from "./features/game/systems/InitializePlayerSyst
 import InitializeStoriesSystem from "./features/game/systems/InitializeStoriesSystem";
 import InitializeWorldItemsSystem from "./features/game/systems/InitializeWorldItemsSystem";
 import { Stories } from "./base/enums";
+import InitializeInventoryItemsSystem from "./features/game/systems/InitializeInventoryItemsSystem";
 
 const App = () => {
   const isPlayGameStoryCurrent = useIsCurrentStory(Stories.PLAY_GAME_STORY);
@@ -13,6 +14,7 @@ const App = () => {
       <InitializeStoriesSystem />
       <InitializePlayerSystem />
       <InitializeWorldItemsSystem />
+      <InitializeInventoryItemsSystem />
 
       <Map />
 

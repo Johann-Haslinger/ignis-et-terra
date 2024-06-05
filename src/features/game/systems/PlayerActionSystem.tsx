@@ -1,12 +1,12 @@
+import { LeanScopeClientContext } from "@leanscope/api-client/node";
 import { useContext, useEffect } from "react";
 import { useInventory } from "../hooks/useInventory";
-import { LeanScopeClientContext } from "@leanscope/api-client/node";
 import { usePlayer } from "../hooks/usePlayer";
 
 const PlayerActionSystem = () => {
   const lsc = useContext(LeanScopeClientContext);
   const { isInventoryOpen, activateInventory, deactivateInventory } = useInventory();
-  const { positionX } = usePlayer();
+  const { playerPositionX: positionX } = usePlayer();
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {

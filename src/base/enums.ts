@@ -6,16 +6,20 @@ export enum Stories {
 
 export enum AdditionalTags {
   PLAYER,
+  COLLIDING_WITH_PLAYER,
 }
 
 export enum ItemTypes {
   FOOD,
   WEAPON,
   ARMOR,
-  CONSUMABLE,
-  QUEST,
+  OTHER,
 }
 
 export enum FoodItems {
   APPLE,
+}
+
+export enum OtherItems {
+  STONE,
 }

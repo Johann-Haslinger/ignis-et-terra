@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
-import { usePlayer as usePlayer } from "../hooks/usePlayer";
 import { PositionFacet } from "@leanscope/ecs-models";
 import { useFrame } from "@react-three/fiber";
+import { useEffect, useRef } from "react";
 import { PLAYER_SMOTHNESS, PLAYER_SPEED } from "../../../base/constants";
+import { usePlayer } from "../hooks/usePlayer";
 
 const PlayerMovementSystem = () => {
-  const { positionX, positionY, playerEntity } = usePlayer();
+  const { playerPositionX: positionX, playerPositionY: positionY, playerEntity } = usePlayer();
   const previousPositionRef = useRef([1, 1]);
   const movementRef = useRef([0, 0]);
 
