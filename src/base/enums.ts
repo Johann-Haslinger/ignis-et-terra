@@ -7,6 +7,7 @@ export enum Stories {
 export enum AdditionalTags {
   PLAYER,
   COLLIDING_WITH_PLAYER,
+  NOTIFICATION
 }
 
 export enum ItemTypes {
