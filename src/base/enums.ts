@@ -5,9 +5,9 @@ export enum Stories {
 }
 
 export enum AdditionalTags {
-  PLAYER,
   COLLIDING_WITH_PLAYER,
-  NOTIFICATION
+  NOTIFICATION,
+  FIREBALL,
 }
 
 export enum ItemTypes {
@@ -23,4 +23,15 @@ export enum FoodItems {
 
 export enum OtherItems {
   STONE,
+}
+
+export enum Directions {
+  UP = "up",
+  UP_RIGHT = "up_right",
+  RIGHT = "right",
+  DOWN_RIGHT = "down_right",
+  DOWN = "down",
+  DOWN_LEFT = "down_left",
+  LEFT = "left",
+  UP_LEFT = "up_left",
 }
