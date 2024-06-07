@@ -12,6 +12,8 @@ import WorldItemsCollisionWithPlayerSystem from "../../systems/WorldItemsCollisi
 import { AdditionalTags } from "../../../../base/enums";
 import UpdateFireballPositionSystem from "../../systems/UpdateFireballPositionSystem";
 import Fireball from "../player/Fireball";
+import PlayerStatus from "../status/PlayerStatus";
+import CollectItemNotifications from "../status/CollectItemNotification";
 
 const StyledMapContainer = styled.div`
   ${tw`w-screen h-screen`}
@@ -21,11 +23,10 @@ const Map = () => {
   return (
     <StyledMapContainer>
       <WorldItemsCollisionWithPlayerSystem />
-
       <FullScreenCanvas>
         <UpdateFireballPositionSystem />
 
-        <Box args={[5, 5, 0]} position={[0, 0, 0]}>
+        <Box args={[16, 16, 0]} position={[0, 0, 0]}>
           <meshBasicMaterial depthTest={true} transparent color={"white"} />
         </Box>
 
@@ -47,7 +48,8 @@ const Map = () => {
           onMatch={Fireball}
         />
       </FullScreenCanvas>
-
+      <PlayerStatus />
+      <CollectItemNotifications />
       <Inventory />
     </StyledMapContainer>
   );

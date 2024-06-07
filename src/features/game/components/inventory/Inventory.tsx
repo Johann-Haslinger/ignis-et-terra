@@ -50,33 +50,46 @@ const StyledInventorySpacer = styled.div`
 const StyledInventoryColumn = styled.div`
   ${tw`grid grid-cols-2 gap-4   w-36  h-fit`}
 `;
-
-const StyledManaCountWrapper = styled.div`
-  ${tw`flex mx-auto bg-white w-32 h-10 mb-2 items-center`}
+const StyledFlexBox = styled.div`
+  ${tw`flex w-[30rem] mx-auto justify-between`}
+`;
+const StyledCountWrapper = styled.div`
+  ${tw`flex  bg-white w-32 h-10 mb-2 items-center`}
 `;
 
 const StyledManaPoint = styled.div`
-  ${tw`w-4 h-4 bg-blue-500 rounded-full`}
+  ${tw`w-4 h-4  rounded-full`}
+  background-color: blue;
 `;
 
-
-
+const StyledHealthPoint = styled.div`
+  ${tw`w-4 h-4  rounded-full`}
+  background-color: red;
+`;
 const Inventory = () => {
   const { isInventoryOpen } = useInventory();
   const { inventoryRef } = useInventoryRef();
   const [inventoryItemEntities] = useEntities((e) => e.has(ItemTypeFacet) && !e.has(PositionFacet));
-  const { playerManaCount } = usePlayer();
+  const { playerManaCount, playerHealthCount } = usePlayer();
 
   return (
     isInventoryOpen && (
       <StyledInventoryContainer>
         <StyledInventorySpacer>
-          <StyledManaCountWrapper>
-            Mana:
-            {Array.from({ length: playerManaCount || 0 }).map((_, idx) => (
-              <StyledManaPoint key={idx} />
-            ))}
-          </StyledManaCountWrapper>
+          <StyledFlexBox>
+            <StyledCountWrapper>
+              Mana:
+              {Array.from({ length: playerManaCount || 0 }).map((_, idx) => (
+                <StyledManaPoint key={idx} />
+              ))}
+            </StyledCountWrapper>
+            <StyledCountWrapper>
+              Health:
+              {Array.from({ length: playerHealthCount || 0 }).map((_, idx) => (
+                <StyledHealthPoint key={idx} />
+              ))}
+            </StyledCountWrapper>
+          </StyledFlexBox>
           <StyledInventoryWrapper ref={inventoryRef}>
             <StyledInventoryColumn>
               {Array.from({ length: 8 }).map((_, idx) => (

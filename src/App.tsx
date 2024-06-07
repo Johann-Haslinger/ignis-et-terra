@@ -1,6 +1,5 @@
 import { Directions } from "./base/enums";
 import { Map } from "./features/game";
-import CollectItemNotifications from "./features/game/components/status/CollectItemNotification";
 import { usePlayer } from "./features/game/hooks/usePlayer";
 import DeleteNotificationsSystem from "./features/game/systems/DeleteNotificationsSystem";
 import InitializeInventoryItemsSystem from "./features/game/systems/InitializeInventoryItemsSystem";
@@ -42,8 +41,6 @@ const App = () => {
       <DeleteNotificationsSystem />
 
       <Map />
-
-      <CollectItemNotifications />
 
       <div style={{ position: "absolute", bottom: 0, right: 0 }}>{getPlayerDirection(playerDirection)}</div>
     </div>

@@ -40,3 +40,23 @@ export class ManaCountFacet extends Facet<ManaCountProps> {
     super(props);
   }
 }
+
+export interface HealthCountProps {
+  healthCount: number;
+}
+
+export class HealthCountFacet extends Facet<HealthCountProps> {
+  constructor(props: HealthCountProps) {
+    super(props);
+  }
+}
+
+export interface MaxHealthCountProps {
+  maxHealthCount: number;
+}
+
+export class MaxHealthCountFacet extends Facet<MaxHealthCountProps> {
+  constructor(props: MaxHealthCountProps) {
+    super(props);
+  }
+}

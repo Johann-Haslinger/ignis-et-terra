@@ -5,6 +5,7 @@ import { DirectionFacet } from "../../../app/gameFacets";
 import { AdditionalTags } from "../../../base/enums";
 import { useContext } from "react";
 import { LeanScopeClientContext } from "@leanscope/api-client/node";
+import { FIREBALL_SPEED } from "../../../base/constants";
 
 const UpdateFireballPositionSystem = () => {
   const lsc = useContext(LeanScopeClientContext);
@@ -14,41 +15,39 @@ const UpdateFireballPositionSystem = () => {
     fireballEntities.forEach((fireballEntity) => {
       const fireballPosition = fireballEntity.get(PositionFacet);
       const fireballDirection = fireballEntity.get(DirectionFacet)?.props.direction;
-      const fireballSpeed = 0.1;
 
-      console.log(fireballPosition, fireballDirection);
       let newPositionX = fireballPosition?.props.positionX || 0;
       let newPositionY = fireballPosition?.props.positionY || 0;
 
       if (fireballPosition && fireballDirection) {
         const { positionX, positionY } = fireballPosition.props;
         if (fireballDirection === "up") {
-          newPositionY = positionY + fireballSpeed;
+          newPositionY = positionY + FIREBALL_SPEED;
         }
         if (fireballDirection === "down") {
-          newPositionY = positionY - fireballSpeed;
+          newPositionY = positionY - FIREBALL_SPEED;
         }
         if (fireballDirection === "left") {
-          newPositionX = positionX - fireballSpeed;
+          newPositionX = positionX - FIREBALL_SPEED;
         }
         if (fireballDirection === "right") {
-          newPositionX = positionX + fireballSpeed;
+          newPositionX = positionX + FIREBALL_SPEED;
         }
         if (fireballDirection === "up_right") {
-          newPositionX = positionX + fireballSpeed / 1.5;
-          newPositionY = positionY + fireballSpeed / 1.5;
+          newPositionX = positionX + FIREBALL_SPEED / 1.5;
+          newPositionY = positionY + FIREBALL_SPEED / 1.5;
         }
         if (fireballDirection === "up_left") {
-          newPositionX = positionX - fireballSpeed / 1.5;
-          newPositionY = positionY + fireballSpeed / 1.5;
+          newPositionX = positionX - FIREBALL_SPEED / 1.5;
+          newPositionY = positionY + FIREBALL_SPEED / 1.5;
         }
         if (fireballDirection === "down_right") {
-          newPositionX = positionX + fireballSpeed / 1.5;
-          newPositionY = positionY - fireballSpeed /1.5;
+          newPositionX = positionX + FIREBALL_SPEED / 1.5;
+          newPositionY = positionY - FIREBALL_SPEED / 1.5;
         }
         if (fireballDirection === "down_left") {
-          newPositionX = positionX - fireballSpeed / 1.5;
-          newPositionY = positionY - fireballSpeed / 1.5;
+          newPositionX = positionX - FIREBALL_SPEED / 1.5;
+          newPositionY = positionY - FIREBALL_SPEED / 1.5;
         }
 
         fireballEntity.add(new PositionFacet({ positionX: newPositionX, positionY: newPositionY, positionZ: 0 }));

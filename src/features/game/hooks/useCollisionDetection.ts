@@ -32,7 +32,6 @@ const useCollisionDetection = (
       width: playerSize.width,
       height: playerSize.height,
     };
-    console.log("playerRect", playerRect, positionX);
 
     const objectRect = {
       x: objectPosition.x,

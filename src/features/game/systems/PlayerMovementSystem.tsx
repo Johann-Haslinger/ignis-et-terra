@@ -1,7 +1,7 @@
 import { PositionFacet } from "@leanscope/ecs-models";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
-import { PLAYER_SMOTHNESS, PLAYER_SPEED } from "../../../base/constants";
+import { CANVAS_SCALE, PLAYER_SMOTHNESS, PLAYER_SPEED } from "../../../base/constants";
 import { Directions } from "../../../base/enums";
 import { usePlayer } from "../hooks/usePlayer";
 import { DirectionFacet } from "../../../app/gameFacets";
@@ -14,7 +14,6 @@ const PlayerMovementSystem = () => {
 
   useEffect(() => {
     if (currentDirection) {
-      console.log("add New Direction", currentDirection);
       playerEntity?.add(new DirectionFacet({ direction: currentDirection }));
     }
   }, [currentDirection, playerEntity]);
@@ -102,14 +101,15 @@ const PlayerMovementSystem = () => {
       window.removeEventListener("keyup", handleKeyUp);
     };
   }, [positionX, positionY, playerEntity, currentDirection]);
+
   useFrame(({ camera }) => {
     const [x, y] = [positionX, positionY];
     const [dx, dy] = movementRef.current;
 
     const smoothX = x + dx * PLAYER_SMOTHNESS;
     const smoothY = y + dy * PLAYER_SMOTHNESS;
-    camera.position.x = smoothX;
-    camera.position.y = smoothY;
+    camera.position.x = smoothX * CANVAS_SCALE;
+    camera.position.y = smoothY * CANVAS_SCALE;
 
     playerEntity?.add(new PositionFacet({ positionX: smoothX, positionY: smoothY, positionZ: 0 }));
 

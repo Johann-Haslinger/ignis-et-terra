@@ -2,8 +2,8 @@ import { LeanScopeClientContext } from "@leanscope/api-client/node";
 import { Entity } from "@leanscope/ecs-engine";
 import { IdentifierFacet, PositionFacet } from "@leanscope/ecs-models";
 import { useContext, useEffect } from "react";
-import { DirectionFacet, ManaCountFacet } from "../../../app/gameFacets";
-import { PLAYER_START_POSITION } from "../../../base/constants";
+import { DirectionFacet, HealthCountFacet, ManaCountFacet, MaxHealthCountFacet } from "../../../app/gameFacets";
+import { PLAYER_START_MAX_HEALTH, PLAYER_START_POSITION } from "../../../base/constants";
 import { Directions } from "../../../base/enums";
 
 const InitializePlayerSystem = () => {
@@ -18,6 +18,8 @@ const InitializePlayerSystem = () => {
     newPlayerEntity.add(new IdentifierFacet({ guid: "player" }));
     newPlayerEntity.add(new DirectionFacet({ direction: Directions.DOWN }));
     newPlayerEntity.add(new ManaCountFacet({ manaCount: 5 }));
+    newPlayerEntity.add(new HealthCountFacet({ healthCount: 2 }));
+    newPlayerEntity.add(new MaxHealthCountFacet({ maxHealthCount: PLAYER_START_MAX_HEALTH }));
 
     return () => {
       lsc.engine.removeEntity(newPlayerEntity);

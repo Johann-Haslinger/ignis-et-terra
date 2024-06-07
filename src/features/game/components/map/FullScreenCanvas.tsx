@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { PropsWithChildren } from "react";
 import { NoToneMapping } from "three";
+import { CANVAS_SCALE } from "../../../../base/constants";
 
 const FullScreenCanvas = (props: PropsWithChildren) => {
   const { children } = props;
@@ -16,7 +17,7 @@ const FullScreenCanvas = (props: PropsWithChildren) => {
         height: "100%",
       }}
     >
-      {children}
+      <group scale={[CANVAS_SCALE, CANVAS_SCALE, 1]}>{children}</group>
       <perspectiveCamera position={[0, 0, 2]} />
     </Canvas>
   );

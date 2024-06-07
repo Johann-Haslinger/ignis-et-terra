@@ -18,7 +18,7 @@ const WorldItemsCollisionWithPlayerSystem = () => {
         Math.pow(playerPositionX - positionX, 2) + Math.pow(playerPositionY - 0.5 - positionY, 2)
       );
 
-      if (distance < 0.7) {
+      if (distance < 1.4) {
         entity.add(AdditionalTags.COLLIDING_WITH_PLAYER);
       } else {
         entity.remove(AdditionalTags.COLLIDING_WITH_PLAYER);
